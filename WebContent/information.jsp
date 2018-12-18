@@ -1,8 +1,7 @@
-<%@page import="cn.niit.jdbc.dao.WorkDao"%>
-<%@page import="cn.niit.jdbc.dao.PersonalDao"%>
-<%@page import="cn.niit.jdbc.dao.EducationDao"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -67,29 +66,13 @@
             reader.readAsDataURL(file);
         }
     </script>
-    <%@ page import="cn.niit.jdbc.domain.EducationExperience" %>
-    <%@ page import="cn.niit.jdbc.domain.UserInformation" %>
-    <%@ page import="cn.niit.jdbc.domain.WorkExperience" %>
-    <% 
-    String name = (String)request.getAttribute("testname");
-    EducationDao edao=new EducationDao();
-    PersonalDao pdao = new PersonalDao();
-    WorkDao wdao = new WorkDao();
-    EducationExperience elist = new EducationExperience();
-    UserInformation plist = new UserInformation();
-    WorkExperience wlist = new WorkExperience();
-    
-    elist = edao.find(name);
-    plist = pdao.find(name);
-    wlist = wdao.find(name);
-    %>
 </head>
  <body class="e">
 <div class="g">
 
 </div>
 <div class="b">
-    <img src="./img/love.png" style="width:110px ;height: 80px" />
+    <img src='./img/${img}' style="width:110px ;height: 80px" />
 
     <!-- HTML页面布局 -->
 
@@ -110,51 +93,51 @@
                     <tr>
                         <td align="right"> 姓名:</td>
                         <td align="left">
-                            <input type="text" name="name" style="border-radius:9px;" value="<%= plist.getFullname() %>">
+                            <input type="text" name="name" style="border-radius:9px;" value="${info.fullname}">
                         </td>
                         <td align="right"> 个人网站:</td>
                         <td align="left" >
-                            <input type="text" name="Student_ID" style="border-radius:9px;" value="<%= plist.getPersonalWebsite() %>">
+                            <input type="text" name="Student_ID" style="border-radius:9px;" value="${info.personalWebsite}">
                         </td>
                     </tr>
                     <tr>
                         <td align="right"> 证件类型:</td>
                         <td align="left">
-                            <input type="text" name="Document_type" style="border-radius:9px;" value="<%= plist.getDocumentType() %>">
+                            <input type="text" name="Document_type" style="border-radius:9px;" value="${info.documentType }">
                         </td>
                         <td align="right"> 证件号:</td>
                         <td align="left"   >
 
-                            <input type="text" name="ID_number" style="border-radius:9px;" value="<%= plist.getIDcard() %>">
+                            <input type="text" name="ID_number" style="border-radius:9px;" value="${info.idcard }">
                         </td>
                     </tr>
                     <tr>
                         <td align="right">性别:</td>
                         <td align="left">
-                            <select name="sex" style="border-radius:9px; width: 350px;height:35px " value="<%= plist.getGender() %>">
+                            <select name="sex" style="border-radius:9px; width: 350px;height:35px " value="${info.gender }">
                                 <option value="男">男</option>
                                 <option value="女">女</option>
                             </select>
                         </td>
                         <td align="right">手机号:</td>
                         <td align="left"  >
-                            <input type="text" name="Cell_phone_number" style="border-radius:9px;" value="">
+                            <input type="text" name="Cell_phone_number" style="border-radius:9px;" value="${user.phonenumber }">
                         </td>
                     </tr>
                     <tr>
                         <td align="right">出生日期:</td>
                         <td align="left">
-                            <input type="text" name="Date_of_birth" style="border-radius:9px;" value="<%= plist.getBirthdate() %>">
+                            <input type="text" name="Date_of_birth" style="border-radius:9px;" value="${info.birthdate }">
                         </td>
                         <td align="right">邮箱:</td>
                         <td align="left"  >
-                            <input type="email" name="mailbox" style="border-radius:9px;" value="">
+                            <input type="email" name="mailbox" style="border-radius:9px;" value="${user.mailbox }">
                         </td>
                     </tr>
                     <tr>
                         <td align="right">  Q&nbsp;Q</td>
                         <td align="left">
-                            <input type="text" name="QQ" style="border-radius:9px;" value="<%= plist.getQq() %>">
+                            <input type="text" name="QQ" style="border-radius:9px;" value="${info.qq}">
                         </td>
                        
                     </tr>
@@ -162,7 +145,7 @@
                         <td align="right"><spen >个人简介:</spen></td>
                         <td colspan="4">
                         <textarea name="Personal_profile" cols="115" rows="4"  style="border-radius:9px;" >
-                        <%= plist.getPersonalProfile() %>
+                        ${info.personalProfile }
                         </textarea>
                         </td>
                     </tr>
@@ -180,36 +163,36 @@
                     <tr>
                         <td align="right">公司名称:</td>
                         <td align="left">
-                            <input type="text" name="Corporate_name" style="border-radius:9px;">
+                            <input type="text" name="Corporate_name" style="border-radius:9px;" value="${work.corporateName}">
                         </td>
                         <td align="right">职位头衔:</td>
                         <td align="left" >
-                            <input type="text" name="Position_title" style="border-radius:9px;">
+                            <input type="text" name="Position_title" style="border-radius:9px;" value="${work.positionTitle}">
                         </td>
                     </tr>
                     <tr>
                         <td align="right">工作城市:</td>
                         <td align="left">
-                            <input type="text" name="Work_city" style="border-radius:9px;">
+                            <input type="text" name="Work_city" style="border-radius:9px;" value="${work.workCity}">
                         </td>
                         <td align="right">工作时间:</td>
                         <td align="left">
 
-                            <input type="text" name="Working_hours" style="border-radius:9px;">
+                            <input type="text" name="Working_hours" style="border-radius:9px;" value="${work.workingHours}">
                         </td>
                     </tr>
                     <tr>
-                        <td align="right"><spen >相关技术:</spen></td>
+                        <td align="right"><span>相关技术:</span></td>
                         <td colspan="4">
-                        <textarea name="Related_technology" cols="115" rows="4"  style="border-radius:9px;">
+                        <textarea name="Related_technology" cols="115" rows="4"  style="border-radius:9px;" value="${work.technology }">
 
                         </textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td align="right"><spen >职位描述:</spen></td>
+                        <td align="right"><span>职位描述:</span></td>
                         <td colspan="4">
-                        <textarea name="Position_describe" cols="115" rows="4"  style="border-radius:9px;">
+                        <textarea name="Position_describe" cols="115" rows="4"  style="border-radius:9px;" value="${work.positionDescribe}">
 
                         </textarea>
                         </td>
@@ -228,28 +211,28 @@
                     <tr>
                         <td align="right"> 学院名称:</td>
                         <td align="left">
-                            <input type="text" name="School_name" style="border-radius:9px;">
+                            <input type="text" name="School_name" style="border-radius:9px;" value="${edu.schoolName}">
                         </td>
                         <td align="right"> 所学专业:</td>
                         <td align="left">
-                            <input type="text" name="Major_studied" style="border-radius:9px;">
+                            <input type="text" name="Major_studied" style="border-radius:9px;" value="${edu.majorStudied}">
                         </td>
                     </tr>
                     <tr>
                         <td align="right"> 入学时间:</td>
                         <td align="left">
-                            <input type="text" name="Admission_time" style="border-radius:9px;">
+                            <input type="text" name="Admission_time" style="border-radius:9px;" value="${edu.admissionTime}">
                         </td>
                         <td align="right"> 学历:</td>
                         <td align="left">
 
-                            <input type="text" name="Education" style="border-radius:9px;">
+                            <input type="text" name="Education" style="border-radius:9px;" value="${edu.education}">
                         </td>
                     </tr>
                     <tr>
                         <td align="right"><spen >相关技术:</spen></td>
                         <td colspan="4">
-                        <textarea name="Related_skills" cols="115" rows="4"  style="border-radius:9px;">
+                        <textarea name="Related_skills" cols="115" rows="4"  style="border-radius:9px;" value="${edu.relatedSkils}">
 
                         </textarea>
                         </td>
@@ -257,14 +240,14 @@
                     <tr>
                         <td align="right"><spen >取得成就:</spen></td>
                         <td colspan="4">
-                        <textarea name="Achievements" cols="115" rows="4" style="border-radius:9px;" >
+                        <textarea name="Achievements" cols="115" rows="4" style="border-radius:9px;" value="${edu.achievements}">
 
                         </textarea>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="4" align="center">
-                            <input type="submit" value="保存" name="Preservation" style="border-radius:9px;">
+                            <input type="submit" value="保存" name="Preservation" style="border-radius:9px;" >
                         </td>
                     </tr>
                 </table>
@@ -274,7 +257,7 @@
 
         <div class="hide">
             <img id="preview" style="width: 100px;height: 100px"/>
-            <form action="#" method="post">
+            <form action="UploadServlet" method="post">
                 <br />
                 <input type="file" name="file" accept="image/png,image/gif" id="imgFile" onchange="imgPreview(this)" />
                 <br/>
@@ -286,9 +269,10 @@
         <div class = "hide">
             <form action="##" method="post" name="Information_modification">
                 <table>
-                    <td align="right"><spen >情感经历:</spen></td>
+                	<tr>
+                    <td align="right"><span>情感经历:</span></td>
                     <td colspan="4">
-                        <textarea name="Personal_profile" cols="115" rows="4" style="border-radius:9px; height: 300px" >
+                        <textarea name="Personal_profile" cols="115" rows="4" style="border-radius:9px; height: 300px" value="${info.qq}">
 
                         </textarea>
                     </td>

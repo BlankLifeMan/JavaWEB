@@ -6,8 +6,8 @@ private String fullname;
 private String gender;
 private String qq;
 private String personalWebsite;
-private String DocumentType;
-private String IDcard;
+private String documentType;
+private String idcard;
 private String birthdate;
 private String personalProfile;
 private String name;
@@ -55,17 +55,12 @@ public void setPersonalWebsite(String personalWebsite) {
 	this.personalWebsite = personalWebsite;
 }
 public String getDocumentType() {
-	return DocumentType;
+	return documentType;
 }
 public void setDocumentType(String documentType) {
-	DocumentType = documentType;
+	this.documentType = documentType;
 }
-public String getIDcard() {
-	return IDcard;
-}
-public void setIDcard(String iDcard) {
-	IDcard = iDcard;
-}
+
 public String getBirthday() {
 	return birthdate;
 }
@@ -77,6 +72,12 @@ public String getPersonalProfile() {
 }
 public void setPersonalProfile(String personalProfile) {
 	this.personalProfile = personalProfile;
+}
+public String getIdcard() {
+	return idcard;
+}
+public void setIdcard(String idcard) {
+	this.idcard = idcard;
 }
 
 

@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import cn.niit.jdbc.dao.UsersDao;
 import cn.niit.jdbc.domain.EducationExperience;
 import cn.niit.jdbc.domain.UserInformation;
-import cn.niit.jdbc.domain.UserLogin;
+import cn.niit.jdbc.domain.User;
 import cn.niit.jdbc.domain.WorkExperience;
-import co.niit.jdbc.utils.Verification;
+import cn.niit.jdbc.utils.Verification;
 import jdk.nashorn.internal.ir.RuntimeNode.Request;
 @WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
@@ -25,7 +25,7 @@ public class UserServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UsersDao dao = new UsersDao();
-		UserLogin user = new UserLogin();
+		User user = new User();
 		WorkExperience work = new WorkExperience();
 		UserInformation user1 = new UserInformation();
 		EducationExperience eex = new EducationExperience();

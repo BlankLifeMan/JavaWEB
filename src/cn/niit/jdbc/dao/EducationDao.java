@@ -7,9 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import cn.niit.jdbc.domain.EducationExperience;
-import cn.niit.jdbc.domain.UserLogin;
+import cn.niit.jdbc.domain.User;
 import cn.niit.jdbc.domain.WorkExperience;
-import co.niit.jdbc.utils.JDBCUtils;
+import cn.niit.jdbc.utils.JDBCUtils;
 
 public class EducationDao {
 	//添加用户的教育经历操作

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import cn.niit.jdbc.dao.EducationDao;
 import cn.niit.jdbc.dao.UsersDao;
 import cn.niit.jdbc.domain.EducationExperience;
-import cn.niit.jdbc.domain.UserLogin;
+import cn.niit.jdbc.domain.User;
 
 /**
  * Servlet implementation class EducationServlet
@@ -26,7 +26,7 @@ public class EducationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EducationExperience eex = new EducationExperience();
 		EducationDao dao = new EducationDao();
-		UserLogin userLogin = new UserLogin();
+		User userLogin = new User();
 		String name = userLogin.getUsername();
 		
 		String schoolName = request.getParameter("School_name");

@@ -12,7 +12,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import cn.niit.jdbc.dao.UsersDao;
-import cn.niit.jdbc.domain.UserLogin;
+import cn.niit.jdbc.domain.User;
 
 /**
  * Servlet implementation class UploadServlet
@@ -41,6 +41,10 @@ public class UploadServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		 HttpSession session = request.getSession();
+ 		String name1 = (String) session.getAttribute("testname");
+ 		
 		 try {
 //	          request.getParameter("");                   //创建磁盘文件工厂
 	            DiskFileItemFactory fileItemFactory =  new DiskFileItemFactory();
@@ -71,10 +75,13 @@ public class UploadServlet extends HttpServlet {
 	                    //String path = ("D:\\apache-tomcat-9.0.11\\img");//这里改路径
 	                    String dizhi = path+"/"+fileName;
 	                    OutputStream os = new FileOutputStream(path+"/"+fileName);//cs.jpg
-	                    UserLogin user = new UserLogin();
+	                   
+	                    
+	                   
+	                    User user = new User();
 	                    user.setImg(dizhi);
-	                    UsersDao dao = new UsersDao();
-	                    dao.updatePicture(user);
+	            	  UsersDao dao = new UsersDao();
+	                    dao.updatePicture(user,name1);
 	                    
 	              
 	                    byte[] byts = new byte[1024];
@@ -91,12 +98,14 @@ public class UploadServlet extends HttpServlet {
 	           
 //	          BeanUtils.populate();   //将实体对应的属性赋给实体（收集数据）
 	            if (!fileName.equals(null)&&!fileName.equals("")) {
-	                //将图片路径赋给实体的某个属性                    
+	                //将图片路径赋给实体的某个属性     
+	            	
 	            }
 	            
 	        //将实体的数据写入到数据库
 		} catch (FileUploadException e) {
 		e.printStackTrace();
 	     } 
+		 response.setHeader("Refresh", "0;URL=/ServletJdbcDemo/information.jsp");
 	}
 }

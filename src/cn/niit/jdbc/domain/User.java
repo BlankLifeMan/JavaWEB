@@ -1,6 +1,6 @@
 package cn.niit.jdbc.domain;
 
-public class UserLogin {
+public class User {
 
 	private int userloginID;
 	private String username;

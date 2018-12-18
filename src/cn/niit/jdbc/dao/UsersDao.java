@@ -6,16 +6,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 import cn.niit.jdbc.domain.EducationExperience;
+import cn.niit.jdbc.domain.User;
 import cn.niit.jdbc.domain.UserInformation;
-import cn.niit.jdbc.domain.UserLogin;
 import cn.niit.jdbc.domain.WorkExperience;
-import co.niit.jdbc.utils.JDBCUtils;
+import cn.niit.jdbc.utils.JDBCUtils;
+
 
 
 public class UsersDao {
 	//根据name,pass查找指定的id
-		public UserLogin getId(String name,String pass){
+		public User getId(String name,String pass){
 			Connection conn = null;
 			Statement stmt = null;
 			ResultSet rs = null;
@@ -29,7 +31,7 @@ public class UsersDao {
 				rs = stmt.executeQuery(sql);
 				//处理结果集
 				while(rs.next()){
-					UserLogin user = new UserLogin();
+					User user = new User();
 					user.setUserloginID(rs.getInt("User_login_id"));
 					return user;
 	 			}
@@ -83,7 +85,7 @@ public class UsersDao {
 		return false;
 	}
 	//添加用户的操作
-	public boolean insert(UserLogin user) {
+	public boolean insert(User user) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -112,11 +114,11 @@ public class UsersDao {
 	}
 	
 	//查询所有的User对象
-	public ArrayList<UserLogin> findAll(){
+	public ArrayList<User> findAll(){
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		ArrayList<UserLogin> list = new ArrayList<UserLogin>();
+		ArrayList<User> list = new ArrayList<User>();
 		try{
 			//获得数据的连接
 			conn = JDBCUtils.getConnection();
@@ -127,7 +129,7 @@ public class UsersDao {
 			rs = stmt.executeQuery(sql);
 			//处理结果集
 			while(rs.next()){
-				UserLogin user = new UserLogin();
+				User user = new User();
 				user.setUsername(rs.getString("User_name"));
 				user.setPhonenumber(rs.getString("Cell_phone_number"));
 				user.setPassword(rs.getString("Password"));
@@ -145,7 +147,7 @@ public class UsersDao {
 	}
 	
 	//根据name查找指定的user
-	public UserLogin find(String name,String pass){
+	public User find(String name){
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -155,12 +157,12 @@ public class UsersDao {
 			//获得Statement对象
 			stmt = conn.createStatement();
 			//发送SQL语句
-			String sql = "SELECT * FROM User_login_registry WHERE User_name="+"'"+name+"'"+" and "+"Password="+"'"+pass+"'";
+			String sql = "SELECT * FROM User_login_registry WHERE User_name="+"'"+name+"'";
 			
 			rs = stmt.executeQuery(sql);
 			//处理结果集
 			while(rs.next()){
-				UserLogin user = new UserLogin();
+				User user = new User();
 				user.setUsername(rs.getString("User_name"));
 				user.setPhonenumber(rs.getString("Cell_phone_number"));
 				user.setPassword(rs.getString("Password"));
@@ -202,7 +204,7 @@ public class UsersDao {
 			return false;
 	}
 	//修改用户
-	public boolean update(UserLogin user){
+	public boolean update(User user){
 		Connection conn=null;
 		PreparedStatement stmt=null;
 		ResultSet rs = null;
@@ -219,10 +221,8 @@ public class UsersDao {
 			stmt.setString(3, user.getPassword());
 			stmt.setString(4, user.getMailbox());
 			int num = stmt.executeUpdate();
-			if (num>0) {
-				return true;
-			}
-			return false;
+			return num > 0;
+			
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -233,7 +233,7 @@ public class UsersDao {
 	}
 	
 	//修改用户头像
-		public boolean updatePicture(UserLogin user){
+		public boolean updatePicture(User user,String name){
 			Connection conn=null;
 			PreparedStatement stmt=null;
 			ResultSet rs = null;
@@ -243,7 +243,7 @@ public class UsersDao {
 				//获得Statement对象
 				
 				//发送SQL语句
-				String sql = "UPDATE User_login_registry set img=?";
+				String sql = "UPDATE User_login_registry set img=? where name = '"+name+"'";
 				stmt = conn.prepareStatement(sql);
 				stmt.setString(1, user.getImg());
 				int num = stmt.executeUpdate();

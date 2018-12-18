@@ -6,7 +6,7 @@ public class EducationExperience {
 	private String schoolName;
 	private String majorStudied;
 	private String admissionTime;
-	private String Education;
+	private String education;
 	private String relatedSkils;
 	private String achievements;
 	private String name;
@@ -41,10 +41,10 @@ public class EducationExperience {
 		this.admissionTime = admissionTime;
 	}
 	public String getEducation() {
-		return Education;
+		return education;
 	}
 	public void setEducation(String education) {
-		Education = education;
+		this.education = education;
 	}
 	public String getRelatedSkils() {
 		return relatedSkils;

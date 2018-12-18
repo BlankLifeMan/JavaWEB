@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import cn.niit.jdbc.dao.PersonalDao;
 import cn.niit.jdbc.dao.UsersDao;
 import cn.niit.jdbc.domain.UserInformation;
-import cn.niit.jdbc.domain.UserLogin;
+import cn.niit.jdbc.domain.User;
 
 @WebServlet("/PersonalServlet")
 public class PersonalServlet extends HttpServlet {
@@ -21,7 +21,7 @@ public class PersonalServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserInformation userInformation = new UserInformation();
 		PersonalDao pDao = new PersonalDao();
-		UserLogin userLogin = new UserLogin();
+		User userLogin = new User();
 		String name = userLogin.getUsername();
 		
 		request.getParameter("per");
@@ -41,7 +41,7 @@ public class PersonalServlet extends HttpServlet {
 		userInformation.setPersonalWebsite(student);
 		userInformation.setPersonalWebsite(personalWebsite);
 		userInformation.setDocumentType(DocumentType);
-		userInformation.setIDcard(IDcard);
+		userInformation.setIdcard(IDcard);
 		userInformation.setBirthdate(birthdate);
 		userInformation.setPersonalProfile(personalProfile);
 		

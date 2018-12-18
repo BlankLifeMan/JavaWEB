@@ -1,4 +1,4 @@
-package co.niit.jdbc.utils;
+package cn.niit.jdbc.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

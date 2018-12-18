@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,21 +44,18 @@ tr {
     <div style="width: 80%;height: 200px;margin: auto">
         <form action="LoginServlet" method="post" id="user-form">
             <input type="text" name="username" placeholder="手机号/用户名/邮箱">
-             <% if(request.getAttribute("username")!=null){ %>
-                  <span style=" color: red;"><%= request.getAttribute("username")%></span>
-                <% }else{ %>
-                <span></span>
-                <% } %>
+            <c:if test="${username != null}">
+            	<span style=" color: red;">${username}</span>
+            </c:if>
             <input type="password" name="password" placeholder="密码">
-             <% if(request.getAttribute("password")!=null){ %>
-                  <span style=" color: red;"><%= request.getAttribute("password")%></span>
-                <% }else{ %>
-                <span></span>
-                <% } %>
+              <c:if test="${password != null}">
+            	<span style=" color: red;">${password}</span>
+            </c:if>
             <input class="anniu" type="submit" >
         </form>
         <div style="width: 80%;margin: 5% 0 0 5%">
-            <a href="/ServletJdbcDemo/UserLoginZC.jsp">快速注册</a>
+            <a href="/UserLoginZC.jsp">快速注册</a>
+            <a href="/infoServlet">个人中心</a>
             <a href="##">找回密码</a>
         </div>   
          </div>

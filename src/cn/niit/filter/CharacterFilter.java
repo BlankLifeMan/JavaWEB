@@ -1,4 +1,4 @@
-package cn.niit.filter.demo;
+package cn.niit.filter;
 
 import java.io.*;
 import javax.servlet.*;

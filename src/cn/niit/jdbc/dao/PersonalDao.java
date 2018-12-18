@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import cn.niit.jdbc.domain.UserInformation;
-import cn.niit.jdbc.domain.UserLogin;
-import co.niit.jdbc.utils.JDBCUtils;
+import cn.niit.jdbc.utils.JDBCUtils;
+import cn.niit.jdbc.domain.User;
 
 public class PersonalDao {
 	//添加用户个人信息的操作
@@ -27,7 +27,7 @@ public class PersonalDao {
 				stmt.setString(3, user.getQq());
 				stmt.setString(4, user.getPersonalWebsite());
 				stmt.setString(5, user.getDocumentType());
-				stmt.setString(6, user.getIDcard());
+				stmt.setString(6, user.getIdcard());
 				stmt.setString(7, user.getBirthday());
 				stmt.setString(8, user.getPersonalProfile());
 				int num = stmt.executeUpdate();
@@ -66,7 +66,7 @@ public class PersonalDao {
 					user.setQq(rs.getString("Qq"));
 					user.setPersonalWebsite(rs.getString("Personal_website"));
 					user.setDocumentType(rs.getString("Document_type"));
-					user.setIDcard(rs.getString("Certificates_ID"));
+					user.setIdcard(rs.getString("Certificates_ID"));
 					user.setBirthday(rs.getString("Birth_date"));
 					user.setPersonalProfile(rs.getString("Personal_profile"));
 					list.add(user);
@@ -102,7 +102,7 @@ public class PersonalDao {
 					user.setQq(rs.getString("Qq"));
 					user.setPersonalWebsite(rs.getString("Personal_website"));
 					user.setDocumentType(rs.getString("Document_type"));
-					user.setIDcard(rs.getString("Certificates_ID"));
+					user.setIdcard(rs.getString("Certificates_ID"));
 					user.setBirthday(rs.getString("Birth_date"));
 					user.setPersonalProfile(rs.getString("Personal_profile"));
 					return user;
@@ -160,7 +160,7 @@ public class PersonalDao {
 				stmt.setString(3, user.getQq());
 				stmt.setString(4, user.getPersonalWebsite());
 				stmt.setString(5, user.getDocumentType());
-				stmt.setString(6, user.getIDcard());
+				stmt.setString(6, user.getIdcard());
 				stmt.setString(7, user.getBirthday());
 				stmt.setString(8, user.getPersonalProfile());
 				int num = stmt.executeUpdate();

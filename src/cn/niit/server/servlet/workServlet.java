@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.niit.jdbc.dao.UsersDao;
 import cn.niit.jdbc.dao.WorkDao;
-import cn.niit.jdbc.domain.UserLogin;
+import cn.niit.jdbc.domain.User;
 import cn.niit.jdbc.domain.WorkExperience;
 
 /**
@@ -25,7 +25,7 @@ public class workServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		WorkExperience work = new WorkExperience();
 		WorkDao dao = new WorkDao();
-		UserLogin userLogin = new UserLogin();
+		User userLogin = new User();
 		String name = userLogin.getUsername();
 		
 		String corporateName = request.getParameter("Corporate_name");

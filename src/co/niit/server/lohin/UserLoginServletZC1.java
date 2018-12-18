@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.niit.jdbc.dao.UsersDao;
-import cn.niit.jdbc.domain.UserLogin;
+import cn.niit.jdbc.domain.User;
 
 
 /**
@@ -40,7 +40,7 @@ public class UserLoginServletZC1 extends HttpServlet {
 		String phonenumber = request.getParameter("phonenumber");
 		String password = request.getParameter("password");
 		UsersDao dao = new UsersDao();
-		UserLogin user = new UserLogin();
+		User user = new User();
 		user.setPhonenumber(phonenumber);
 		user.setUsername(name);
 		user.setPassword(password);

@@ -6,11 +6,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import org.apache.tomcat.jni.User;
 
-import cn.niit.jdbc.domain.UserLogin;
 import cn.niit.jdbc.domain.WorkExperience;
-import co.niit.jdbc.utils.JDBCUtils;
+import cn.niit.jdbc.utils.JDBCUtils;
 
 public class WorkDao {
 	//添加工作经历

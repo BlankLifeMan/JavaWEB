@@ -2,7 +2,7 @@ package Test;
 
 import cn.niit.jdbc.dao.UsersDao;
 import cn.niit.jdbc.dao.WorkDao;
-import cn.niit.jdbc.domain.UserLogin;
+import cn.niit.jdbc.domain.User;
 import cn.niit.jdbc.domain.WorkExperience;
 
 public class Test {
