@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import cn.niit.jdbc.domain.EducationExperience;
 import cn.niit.jdbc.domain.UserLogin;
+import cn.niit.jdbc.domain.WorkExperience;
 import co.niit.jdbc.utils.JDBCUtils;
 
 public class EducationDao {
@@ -88,17 +89,17 @@ public class EducationDao {
 				//获得Statement对象
 				stmt = conn.createStatement();
 				//发送SQL语句
-				String sql = "SELECT * FROM User_Education_Experience_Table WHERE User_Education_id="+name;
+				String sql = "SELECT * FROM User_Education_Experience_Table WHERE name='"+name+"'";
 				rs = stmt.executeQuery(sql);
 				//处理结果集
 				while(rs.next()){
 					EducationExperience eex = new EducationExperience();
-					eex.setSchoolName(rs.getString("schoolName"));
-					eex.setRelatedSkils(rs.getString("majorStudied"));
-					eex.setAdmissionTime(rs.getString("admissionTime"));
+					eex.setSchoolName(rs.getString("school_Name"));
+					eex.setRelatedSkils(rs.getString("Major_studied"));
+					eex.setAdmissionTime(rs.getString("Admission_time"));
 					eex.setEducation(rs.getString("Education"));
-					eex.setRelatedSkils(rs.getString("relatedSkils"));
-					eex.setAchievements(rs.getString("achievements"));
+					eex.setRelatedSkils(rs.getString("Related_skills"));
+					eex.setAchievements(rs.getString("Achievements"));
 					return eex;
 	 			}
 				return null;
@@ -134,5 +135,10 @@ public class EducationDao {
 					JDBCUtils.release(rs,stmt,conn);
 				}
 				return false;
+		}
+		public static void main(String[] args) {
+			EducationDao dao = new EducationDao();
+			EducationExperience experience = dao.find("翟文强");
+			System.out.println(experience);
 		}
 }

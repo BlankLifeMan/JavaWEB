@@ -97,14 +97,14 @@ public class PersonalDao {
 				//处理结果集
 				while(rs.next()){
 					UserInformation user = new UserInformation();
-					user.setFullname(rs.getString("fullname"));
-					user.setGender(rs.getString("gender"));
-					user.setQq(rs.getString("qq"));
-					user.setPersonalWebsite(rs.getString("personalWebsite"));
-					user.setDocumentType(rs.getString("DocumentType"));
-					user.setIDcard(rs.getString("IDcard"));
-					user.setBirthday(rs.getString("birthdate"));
-					user.setPersonalProfile(rs.getString("personalProfile"));
+					user.setFullname(rs.getString("Full_name"));
+					user.setGender(rs.getString("Gender"));
+					user.setQq(rs.getString("Qq"));
+					user.setPersonalWebsite(rs.getString("Personal_website"));
+					user.setDocumentType(rs.getString("Document_type"));
+					user.setIDcard(rs.getString("Certificates_ID"));
+					user.setBirthday(rs.getString("Birth_date"));
+					user.setPersonalProfile(rs.getString("Personal_profile"));
 					return user;
 	 			}
 				return null;

@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.apache.tomcat.jni.User;
+
 import cn.niit.jdbc.domain.UserLogin;
 import cn.niit.jdbc.domain.WorkExperience;
 import co.niit.jdbc.utils.JDBCUtils;
@@ -87,7 +89,7 @@ public class WorkDao {
 				//获得Statement对象
 				stmt = conn.createStatement();
 				//发送SQL语句
-				String sql = "SELECT * FROM User_Work_Experience_Table WHERE User_Work_id="+name;
+				String sql = "SELECT * FROM User_Work_Experience_Table WHERE name='"+name+"'";
 				rs = stmt.executeQuery(sql);
 				//处理结果集
 				while(rs.next()){
@@ -135,4 +137,7 @@ public class WorkDao {
 				}
 				return false;
 		}
+		
+		
+		
 }

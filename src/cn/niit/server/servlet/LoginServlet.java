@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 					request.setAttribute("testname", name);  
 					RequestDispatcher de=request.getRequestDispatcher("/information.jsp");  
 					de.forward(request, response);
-//					response.setHeader("Refresh", "0;URL=/ServletJdbcDemo/information.jsp");
+					//response.setHeader("Refresh","0;URL=/ServletJdbcDemo/information.jsp");
 				}else{
 					 request.setAttribute("password", "密码不正确！");
 					 RequestDispatcher dispatcher = request.getRequestDispatcher("/UserLogin.jsp");
